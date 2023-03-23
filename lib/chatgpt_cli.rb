@@ -6,20 +6,25 @@ require_relative "contexts"
 require "quick_openai"
 require "optparse"
 
-module ChatGPT
+class ChatGPT
+  def contexts
+    file_contents = File.read(File.join(File.dirname(__FILE__), 'contexts.rb'))
+    instance_eval(file_contents)
+  end
+
   def gpt3(prompt, options)
     context = options[:context] || contexts[ENV["OPENAI_DEFAULT_CONTEXT"].to_sym]
     messages = [
       {role: "user", content: prompt}
     ]
-    messages.unshift({role: "system", content: context}) if context
+    messages.unshift({role: "system", content: context.gsub("\n", ' ').squeeze(' ')}) if context
 
     parameters = {
       model: ENV["OPENAI_MODEL"],
-      max_tokens: 4096,
+      max_tokens: 2048,
       messages: messages,
-  }.merge(options)
-
+    }
+    
     response = QuickOpenAI.fetch_response_from_client do |client|
       client.chat(parameters: parameters)
     end
@@ -37,9 +42,10 @@ module ChatGPTCLI
 
   def self.exe
     options = {}
+    chatgpt = ChatGPT.new
     parser = OptionParser.new do |opts|
       opts.on('-c', '--context CONTEXT_KEY', 'Context key from contexts.rb') do |context_input|
-        options[:context] = contexts.key?(context_input.to_sym) ? contexts[context_input.to_sym] : context_input
+        options[:context] = chatgpt.contexts.key?(context_input.to_sym) ? chatgpt.contexts[context_input.to_sym] : context_input
       end
       opts.on('-p', '--prompt PROMPT_TEXT', 'Prompt text to be passed to GPT-3') do |prompt_text|
         options[:prompt] = prompt_text
@@ -54,7 +60,6 @@ module ChatGPTCLI
     prompt = options[:prompt] || input_from_remaining_args || input_from_pipe || ""
     prompt.strip!
 
-    chatgpt = ChatGPT.new
     puts chatgpt.gpt3(prompt, options)
   rescue QuickOpenAI::Error => e
     warn e.message
