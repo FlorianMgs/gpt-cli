@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require "openai_pipe"
-
-OpenAIPipe.exe

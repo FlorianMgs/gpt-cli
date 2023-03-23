@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require_relative "lib/openai_pipe/version"
+require_relative "lib/chatgpt_cli/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "openai_pipe"
-  spec.version = OpenAIPipe::VERSION
-  spec.authors = ["John DeSilva"]
-  spec.email = ["desilvjo@umich.edu"]
+  spec.name = "chatgpt-cli"
+  spec.version = ChatGPTCLI::VERSION
+  spec.authors = ["John DeSilva", "Florian Magisson"]
+  spec.email = ["desilvjo@umich.edu", "florian@newlogic.com"]
 
   spec.summary = "A UNIX-ey interface to OpenAI"
-  spec.description = "Provides pipe and redirect functionality to quick_openai"
-  spec.homepage = "https://www.github.com/Aesthetikx/openai_pipe"
+  spec.description = "Bring ChatGPT into your CLI as a specialized personal assistant."
+  spec.homepage = "https://github.com/FlorianMgs/chatgpt-cli"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://www.github.com/Aesthetikx/openai_pipe"
-  spec.metadata["changelog_uri"] = "https://www.github.com/Aesthetikx/openai_pipe/blob/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/FlorianMgs/chatgpt-cli"
+  spec.metadata["changelog_uri"] = "https://github.com/FlorianMgs/chatgpt-cli/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

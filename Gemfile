@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in openai_pipe.gemspec
+# Specify your gem's dependencies in chatgpt_cli.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
