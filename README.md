@@ -206,8 +206,8 @@ See examples above for an overview of possible usecases.
 ## Notes
 
 Be aware that there is a cost associated every time GPT3 is invoked, so be mindful of your account usage. Also be wary of sending sensitive data to OpenAI, and also wary of arbitrarily executing scripts or programs that GPT3 generates.
-Also, this is my very first time working in Ruby. So please be indulgent 🙏
-A future release will be to replace the `lib\contexts.rb` by a JSON file so user would be able to very easily add/modify custom context prompts.
+Also, this is my very first time working in Ruby. So please be indulgent 🙏  
+A future release will replace `lib/contexts.rb` by a JSON file so user will be able to easily add/modify custom context prompts.
 
 ## Development
 
