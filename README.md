@@ -1,7 +1,7 @@
 # GPTCLI
 
 This library provides a UNIX-ey interface to OpenAI.
-It is a fork of [openai_pipe](https://github.com/Aesthetikx/openai_pipe), created by [Aesthetikx](https://github.com/Aesthetikx/openai_pipe), kudos to him for his awesome work!  
+It is a fork of [openai_pipe](https://github.com/Aesthetikx/openai_pipe), created by [Aesthetikx](https://github.com/Aesthetikx/), kudos to him for his awesome work!  
 The goal of this fork was to add the ability to choose which OpenAI model to use, as well as adding context prompts support. Thanks to these new features, you can have your own highly specialized GPT4 personal assistant, directly in your terminal! Productivity stonks 📈📈📈   
 
 See [Installation](#installation) and [Setup](#setup) below, but first, some examples.
