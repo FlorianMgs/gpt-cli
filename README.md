@@ -214,6 +214,7 @@ Also, this is my very first time working in Ruby. So please be indulgent 🙏
 ## TODO
 
 - Replace `lib/contexts.rb` by a JSON file that will be located wherever user wants, fetch it's path through ENV var. This way we can easily add/modify custom context prompts.  
+- Add conversation history support  
 - Add dall-e support  
 - Add proper documentation  
 
