@@ -213,6 +213,7 @@ A future release will  by a JSON file so user will be able to easily add/modify 
 
 - Replace `lib/contexts.rb` by a JSON file that will be located wherever user wants, fetch it's path through ENV var. This way we can easily add/modify custom context prompts.  
 - Add dall-e support  
+- Add proper documentation  
 
 ## Development
 
