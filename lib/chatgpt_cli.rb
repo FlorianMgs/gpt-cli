@@ -57,10 +57,11 @@ module ChatGPTCLI
     input_from_pipe = $stdin.read if $stdin.stat.pipe?
     input_from_remaining_args = remaining_args.join(" ") if remaining_args.any?
 
-    prompt = options[:prompt] || input_from_remaining_args || input_from_pipe || ""
-    prompt.strip!
+    prompt = options[:prompt] || input_from_remaining_args || ""
+    full_prompt = [prompt, input_from_pipe].compact.join("\n\n")
+    full_prompt.strip!
 
-    puts chatgpt.gpt3(prompt, options)
+    puts chatgpt.gpt3(full_prompt, options)
   rescue QuickOpenAI::Error => e
     warn e.message
     exit 1
