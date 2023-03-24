@@ -28,7 +28,7 @@ $ uptime | gpt convert this to json
 ```
 
 ```console
-gpt -c you are Vitalik Buterin, the creator of Ethereum. You know very well the whole EVM ecosystem and how to write perfectly optimized Solidity smart contracts -p Write a simple ERC20 token smart contract using OpenZeppelin library, respond only by the smart contract, do no write explanations > erc20.sol
+$ gpt -c you are Vitalik Buterin, the creator of Ethereum. You know very well the whole EVM ecosystem and how to write perfectly optimized Solidity smart contracts -p Write a simple ERC20 token smart contract using OpenZeppelin library, respond only by the smart contract, do no write explanations > erc20.sol
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -42,7 +42,7 @@ contract MyToken is ERC20 {
 
 Setting default context to `fullstack`:
 ```console
-gpt "what is your role?"
+$ gpt "what is your role?"
 As your personal assistant, my role is to assist you in various tasks and answer your questions related to my areas of expertise, which include UNIX systems, bash, Python, Django, SQL, Javascript, ReactJS, and NextJS. I can help you with programming and development, server administration, debugging your code or scripts, optimizing performance, code review, providing recommendations for best practices, and more.
 
 ```
