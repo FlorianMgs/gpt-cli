@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "chatgpt_cli/version"
+require_relative "gpt-cli/version"
 require_relative "contexts"
 
 require "quick_openai"
@@ -37,7 +37,7 @@ class ChatGPT
   end
 end
 
-module ChatGPTCLI
+module GPTCLI
   class Error < StandardError; end
 
   def self.exe

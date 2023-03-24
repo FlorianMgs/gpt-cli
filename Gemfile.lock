@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chatgpt_cli (0.1.2)
+    gpt-cli (0.1.2)
       quick_openai (~> 0.1)
 
 GEM
@@ -64,7 +64,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  chatgpt_cli!
+  gpt-cli!
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)

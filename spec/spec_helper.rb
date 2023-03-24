@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "chatgpt_cli"
+require "gpt-cli"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -1,4 +1,4 @@
-# ChatGPTCLI
+# GPTCLI
 
 This library provides a UNIX-ey interface to OpenAI.
 It is a fork of [openai_pipe](https://github.com/Aesthetikx/openai_pipe), created by [Aesthetikx](https://github.com/Aesthetikx/openai_pipe), kudos to him for his awesome work!  
@@ -74,7 +74,7 @@ $ curl -sL "https://en.wikipedia.org/wiki/cats" | head -n 5 | gpt extract just t
 
 ```console
 $ ls | gpt What is this directory for?
-This directory contains the source code for a Ruby-based project called chatgpt_cli. It includes files related to the project's license (LICENSE.txt), changelog (CHANGELOG.md), dependencies (Gemfile and Gemfile.lock), executables (bin and exe), libraries (lib), signature (sig) and tests (spec). There is also a Rakefile and a README.md file which provide information about how to build and install the project, as well as its features and usage. Finally, it includes the chatgpt_cli-0.1.0.gem and chatgpt_cli.gemspec files which are used to build the gem which can be installed on other systems.
+This directory contains the source code for a Ruby-based project called gpt-cli. It includes files related to the project's license (LICENSE.txt), changelog (CHANGELOG.md), dependencies (Gemfile and Gemfile.lock), executables (bin and exe), libraries (lib), signature (sig) and tests (spec). There is also a Rakefile and a README.md file which provide information about how to build and install the project, as well as its features and usage. Finally, it includes the gpt-cli-0.1.0.gem and gpt-cli.gemspec files which are used to build the gem which can be installed on other systems.
 ```
 
 ```console
@@ -92,8 +92,8 @@ Gemfile - Likely contains Ruby code for the project's dependencies.
 Gemfile.lock - Likely contains a snapshot of the dependencies of the project and versions of those dependencies.
 lib - Likely contains the Ruby source code (e.g. classes and modules) for the project.
 LICENSE.txt - Likely contains the terms of use/license for the project.
-chatgpt_cli-0.1.0.gem - Likely contains a gem that gathers information from the OpenAI API.
-chatgpt_cli.gemspec - Likely contains configuration details for the gem.
+gpt-cli-0.1.0.gem - Likely contains a gem that gathers information from the OpenAI API.
+gpt-cli.gemspec - Likely contains configuration details for the gem.
 planets.lst - Likely contains a list of planets.
 poem.txt - Likely contains a text file containing a poem.
 Rakefile - Likely contains Ruby tasks and dependencies that can be used in projects.
@@ -114,7 +114,7 @@ $ git status | tee /dev/tty | gpt write me a sonnet about the status of this git
 On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        chatgpt_cli-0.1.0.gem
+        gpt-cli-0.1.0.gem
 
 nothing added to commit but untracked files present (use "git add" to track)
 
@@ -125,7 +125,7 @@ Thé untracked files, they still remain unnamed
 
 Fraught with the choice to leave or to persist
 The repository wavers ‘tween future and past
-The chatgpt_cli-0.1.0 gem stands out
+The gpt-cli-0.1.0 gem stands out
 Waiting to be added, not yet about
 
 The commit awaits for brave new changes bold
@@ -147,16 +147,16 @@ The last thing you did was amend a README.md file.
 n.b. here it determines the amend was for README.md not from the previous command but from ones prior that edited README.md.
 
 ```console
-$ cat lib/chatgpt_cli/version.rb | gpt rewrite this file with just the minor version incremented | sponge > lib/chatgpt_cli/version.rb
+$ cat lib/gpt-cli/version.rb | gpt rewrite this file with just the minor version incremented | sponge > lib/gpt-cli/version.rb
 $ git diff
-diff --git a/lib/chatgpt_cli/version.rb b/lib/chatgpt_cli/version.rb
+diff --git a/lib/gpt-cli/version.rb b/lib/gpt-cli/version.rb
 index 0f82357..cc57fab 100644
---- a/lib/chatgpt_cli/version.rb
-+++ b/lib/chatgpt_cli/version.rb
+--- a/lib/gpt-cli/version.rb
++++ b/lib/gpt-cli/version.rb
 @@ -1,5 +1,5 @@
  # frozen_string_literal: true
 
- module ChatGPTCLI
+ module GPTCLI
 -  VERSION = "0.1.0"
 +  VERSION = "0.1.1"
  end
@@ -171,7 +171,7 @@ Le mois courant est Décembre.
 
 Install the gem by executing:
 
-    $ gem install chatgpt_cli
+    $ gem install gpt-cli
 
 ## Setup
 
@@ -189,9 +189,9 @@ export OPENAI_MODEL="gpt-3.5-turbo"
 ```bash
 export OPENAI_DEFAULT_CONTEXT="python"
 ```
-By default the executable is called `chatgpt_cli`. It is reccommended to alias this command to something shorter in .bashrc or equivalent, e.g.
+By default the executable is called `gpt-cli`. It is reccommended to alias this command to something shorter in .bashrc or equivalent, e.g.
 ```bash
-alias gpt="chatgpt_cli"
+alias gpt="gpt-cli"
 ```
 
 ## Usage
@@ -217,7 +217,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/FlorianMgs/chatgpt-cli.
+Bug reports and pull requests are welcome on GitHub at https://github.com/FlorianMgs/gpt-cli.
 
 ## License
 
