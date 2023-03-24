@@ -199,7 +199,7 @@ alias gpt="gpt-cli"
 There's two optional parameters you can set when running `gpt`:  
 `gpt -c <custom_context_prompt> -p <your prompt>`  
 
-`--context -c`: this will be the context prompt, see basic contexts in `lib/contexts.rb`. You can put a key from the contexts hash of `lib/contexts.rb` or a custom context.  
+`--context -c`: this will be the context prompt, see basic contexts in `lib/contexts.rb`. You can put a key from the contexts hash of `lib/contexts.rb` or a custom context. Default to ENV `OPENAI_DEFAULT_CONTEXT` if not set.    
 
 `--prompt -p`: your actual prompt.  
 
