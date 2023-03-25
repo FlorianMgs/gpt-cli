@@ -1,17 +1,33 @@
 # GPTCLI
 
-This library provides a UNIX-ey interface to OpenAI.
-It is a fork of [openai_pipe](https://github.com/Aesthetikx/openai_pipe), created by [Aesthetikx](https://github.com/Aesthetikx/), kudos to him for his awesome work!  
-The goal of this fork was to add the ability to choose which OpenAI model to use, as well as adding context prompts support. Thanks to these new features, you can have your own highly specialized GPT4 personal assistant, directly in your terminal! Productivity stonks 📈📈📈   
+This library provides a UNIX-ey interface to OpenAI.  
+Say hello to your own highly specialized GPT4 personal assistant, directly in your terminal!  
+Productivity stonks 📈📈📈   
+
+Consider 🌟 this repo if you find this tool useful 🔥  
+
+## Features
+- Use the pipe to pass the output of commands to GPT or Dall-E.  
+- Choose your GPT model, GPT4 supported if you have access.  
+- Dall-E support: generate images directly in your terminal.  
+- Contexts prompts tailored for your needs: add/update predefined context prompts or write your own when running the command.  
+- Infinite conversation history: have chat sessions with GPT just like [chat.openai.com](https://chat.openai.com/) but in your terminal.  
 
 See [Installation](#installation) and [Setup](#setup) below, but first, some examples.
 
 ## Examples
 
 ```console
-$ gpt what is two plus two
-Two plus two is equal to four.
+$ gpt "what is your role?"
+As your personal assistant, my role is to assist you in various tasks and answer your questions related to my areas of expertise, which include UNIX systems, bash, Python, Django, SQL, Javascript, ReactJS. I can help you with programming and development, server administration, debugging your code or scripts, optimizing performance, code review, providing recommendations for best practices, and more.
 ```
+
+Use Dall-E:
+```console
+$ gpt give me a very short description of the moon landscape | gpt --dalle
+Image saved in current directory to 7db7ab2e8914175d4f4819e033226563.png
+```
+<img src="https://raw.githubusercontent.com/FlorianMgs/gpt-cli/master/.github/7db7ab2e8914175d4f4819e033226563.png" height=256 width=256></img>
 
 ```console
 $ uptime | gpt convert this to json
@@ -28,26 +44,6 @@ $ uptime | gpt convert this to json
 ```
 
 ```console
-$ gpt -c you are Vitalik Buterin, the creator of Ethereum. You know very well the whole EVM ecosystem and how to write perfectly optimized Solidity smart contracts -p Write a simple ERC20 token smart contract using OpenZeppelin library, respond only by the smart contract, do no write explanations > erc20.sol
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-contract MyToken is ERC20 {
-    constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
-        _mint(msg.sender, initialSupply);
-    }
-}
-```
-
-Setting default context to `fullstack`:
-```console
-$ gpt "what is your role?"
-As your personal assistant, my role is to assist you in various tasks and answer your questions related to my areas of expertise, which include UNIX systems, bash, Python, Django, SQL, Javascript, ReactJS, and NextJS. I can help you with programming and development, server administration, debugging your code or scripts, optimizing performance, code review, providing recommendations for best practices, and more.
-
-```
-
-```console
 $ gpt list the nine planets as JSON | gpt convert this to XML but in French | tee planets.fr.xml
 <Planètes>
    <Planète>Mercure</Planète>
@@ -60,6 +56,19 @@ $ gpt list the nine planets as JSON | gpt convert this to XML but in French | te
    <Planète>Neptune</Planète>
    <Planète>Pluton</Planète>
 </Planètes>
+```
+
+```console
+$ gpt -c "you are Vitalik Buterin, the creator of Ethereum. You know very well the whole EVM ecosystem and how to write perfectly optimized Solidity smart contracts" -p "Write a simple ERC20 token smart contract using OpenZeppelin library, respond only by the smart contract, do no write explanations" > erc20.sol
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract MyToken is ERC20 {
+    constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
+        _mint(msg.sender, initialSupply);
+    }
+}
 ```
 
 ```console
@@ -185,11 +194,11 @@ Set the model you want to use in ENV:
 ```bash
 export OPENAI_MODEL="gpt-3.5-turbo"
 ```
-Copy `gpt_contexts.sample.json` somewhere, for example `~/Documents/gpt_contexts.json`, then put the file path in ENV:
+Copy `gpt_contexts.sample.json` somewhere, for example `~/Documents/gpt_contexts.json`, then put the file path in ENV (don't forget to rename the file to `gpt_contexts.json`):
 ```bash
-export OPENAI_CONTEXTS_PATH="path to gpt_contexts.json"
+export OPENAI_CONTEXTS_PATH="path/to/gpt_contexts.json"
 ```
-(Optional) set the default context prompt you want to use (for now, there's only 3 basic prompts available `python`, `fullstack` and `blockchain` in `gpt_contexts.sample.json`):
+(Optional) set the default context prompt you want to use, see `gpt_contexts.sample.json` for examples:
 ```bash
 export OPENAI_DEFAULT_CONTEXT="python"
 ```
@@ -200,26 +209,31 @@ alias gpt="gpt-cli"
 
 ## Usage
 
-There's two optional parameters you can set when running `gpt`:  
+There's optional parameters you can set when running `gpt`:  
 `gpt -c <custom_context_prompt> -p <your prompt>`  
 
-`--context -c`: this will be the context prompt, see basic contexts in `gpt_contexts.sample.json`. You can put a key from `gpt_contexts.json` or a custom context. Default to ENV `OPENAI_DEFAULT_CONTEXT` if not set. Add your own context prompts in `gpt_contexts.json`.      
+`--context -c`: this will be the context prompt, see basic contexts in `gpt_contexts.sample.json`. You can put a key from `gpt_contexts.json` or a custom context. Default to ENV `OPENAI_DEFAULT_CONTEXT` if not set. Add your own context prompts in `gpt_contexts.json`.  
 
 `--prompt -p`: your actual prompt.  
 
-You can also run gpt without any arguments, just your question. In this case, the context prompt will default to the one defined by ENV var `OPENAI_DEFAULT_CONTEXT` if it exists. If not, no context will be added.  
-See examples above for an overview of some usecases. Possibilities are endless.
+`--history -h`: print conversation history.  
+
+`--dalle -d`: Generate an image from your prompt with Dall-E.  
+
+`--clear`: clear conversation history.  
+
+You can also run gpt without any arguments, just with your prompt. In this case, the context prompt will default to the one defined by ENV var `OPENAI_DEFAULT_CONTEXT` if it exists. If not, no context will be added.  
+See examples above for an overview of some usecases. Possibilities are endless.  
 
 ## Notes
 
-Be aware that there is a cost associated every time GPT3 is invoked, so be mindful of your account usage. Also be wary of sending sensitive data to OpenAI, and also wary of arbitrarily executing scripts or programs that GPT3 generates.
+This is made on top of [openai_pipe](https://github.com/Aesthetikx/openai_pipe), created by [Aesthetikx](https://github.com/Aesthetikx/), kudos to him for his awesome work!  
+Be aware that there is a cost associated every time GPT is invoked, so be mindful of your account usage. Also be wary of sending sensitive data to OpenAI, and also wary of arbitrarily executing scripts or programs that GPT generates.
 Also, this is my very first time working in Ruby. So please be indulgent 🙏  
 
 ## TODO
 
-- Add conversation history support  
 - Add internet search support to feed prompt more accurately  
-- Add dall-e support  
 - Add proper documentation  
 
 ## Development
