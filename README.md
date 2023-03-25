@@ -9,7 +9,7 @@ Consider 🌟 this repo if you find this tool useful 🔥
 ## Features
 - Use the pipe to pass the output of commands to GPT or Dall-E 2.  
 - Choose your GPT model, GPT4 supported if you have access.  
-- Dall-E support: generate images directly in your terminal.  
+- Dall-E 2 support: generate images directly in your terminal.  
 - Contexts prompts tailored for your needs: add/update predefined context prompts or write your own when running the command.  
 - Infinite conversation history: have chat sessions with GPT just like [chat.openai.com](https://chat.openai.com/) but in your terminal.  
 
