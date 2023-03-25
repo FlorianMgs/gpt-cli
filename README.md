@@ -7,7 +7,7 @@ Productivity stonks 📈📈📈
 Consider 🌟 this repo if you find this tool useful 🔥  
 
 ## Features
-- Use the pipe to pass the output of commands to GPT or Dall-E 2.  
+- Use the pipe to pass commands output to GPT or Dall-E 2.  
 - Choose your GPT model, GPT4 supported if you have access.  
 - Dall-E 2 support: generate images directly in your terminal.  
 - Contexts prompts tailored for your needs: add/update predefined context prompts or write your own when running the command.  
