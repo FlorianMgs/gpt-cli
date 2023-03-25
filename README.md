@@ -185,7 +185,11 @@ Set the model you want to use in ENV:
 ```bash
 export OPENAI_MODEL="gpt-3.5-turbo"
 ```
-(Optional) set the default context prompt you want to use (for now, there's only 3 basic prompts available `python`, `fullstack` and `blockchain` in `lib/contexts.rb`):
+Copy `gpt_contexts.sample.json` somewhere, for example `~/Documents/gpt_contexts.json`, then put the file path in ENV:
+```bash
+export OPENAI_CONTEXTS_PATH="path to gpt_contexts.json"
+```
+(Optional) set the default context prompt you want to use (for now, there's only 3 basic prompts available `python`, `fullstack` and `blockchain` in `gpt_contexts.sample.json`):
 ```bash
 export OPENAI_DEFAULT_CONTEXT="python"
 ```
@@ -199,7 +203,7 @@ alias gpt="gpt-cli"
 There's two optional parameters you can set when running `gpt`:  
 `gpt -c <custom_context_prompt> -p <your prompt>`  
 
-`--context -c`: this will be the context prompt, see basic contexts in `lib/contexts.rb`. You can put a key from the contexts hash of `lib/contexts.rb` or a custom context. Default to ENV `OPENAI_DEFAULT_CONTEXT` if not set.    
+`--context -c`: this will be the context prompt, see basic contexts in `gpt_contexts.sample.json`. You can put a key from `gpt_contexts.json` or a custom context. Default to ENV `OPENAI_DEFAULT_CONTEXT` if not set. Add your own context prompts in `gpt_contexts.json`.      
 
 `--prompt -p`: your actual prompt.  
 
@@ -213,7 +217,6 @@ Also, this is my very first time working in Ruby. So please be indulgent 🙏
 
 ## TODO
 
-- Replace `lib/contexts.rb` by a JSON file that will be located wherever user wants, fetch it's path through ENV var. This way we can easily add/modify custom context prompts.  
 - Add conversation history support  
 - Add internet search support to feed prompt more accurately  
 - Add dall-e support  

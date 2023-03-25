@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require_relative "gpt-cli/version"
-require_relative "contexts"
 
+require "json"
 require "quick_openai"
 require "optparse"
 
 class ChatGPT
   def contexts
-    file_contents = File.read(File.join(File.dirname(__FILE__), 'contexts.rb'))
-    instance_eval(file_contents)
+    file_contents = File.read(ENV["OPENAI_CONTEXTS_PATH"])
+    contexts = JSON.parse(file_contents)
+    contexts.transform_keys(&:to_sym)
   end
 
   def gpt3(prompt, options)
@@ -44,7 +45,7 @@ module GPTCLI
     options = {}
     chatgpt = ChatGPT.new
     parser = OptionParser.new do |opts|
-      opts.on('-c', '--context CONTEXT_KEY', 'Context key from contexts.rb') do |context_input|
+      opts.on('-c', '--context CONTEXT_KEY', 'Context key from contexts.json') do |context_input|
         options[:context] = chatgpt.contexts.key?(context_input.to_sym) ? chatgpt.contexts[context_input.to_sym] : context_input
       end
       opts.on('-p', '--prompt PROMPT_TEXT', 'Prompt text to be passed to GPT-3') do |prompt_text|
