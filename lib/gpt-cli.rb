@@ -2,14 +2,14 @@
 
 require_relative "gpt-cli/version"
 
-require 'digest/md5'
+require "digest/md5"
 require "json"
 require "quick_openai"
 require "optparse"
 
 class ChatGPT
   attr_accessor :messages
-  MESSAGES_FILE = 'message_history.json'
+  MESSAGES_FILE = File.join(Dir.home, 'gpt_cli_messages_history.json')
 
   def initialize
     @messages = load_messages

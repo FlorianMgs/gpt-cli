@@ -18,3 +18,7 @@
 - Added messages history
 - Added more context prompts
 - Added Dall-E support
+
+## [0.1.5] - 2023-03-25
+
+- Bugfix
